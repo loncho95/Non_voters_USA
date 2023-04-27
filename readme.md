@@ -41,7 +41,7 @@ Overall, analyzing the behavior and opinions of US citizens leading up to the el
 # A link to your dataset(s) and a screenshot of the metadata, if it exits: https://github.com/fivethirtyeight/data/tree/master/non-voters
 
 # Three or four screenshots of relevant, inspiring visualizations that show your creative idea.
- 
+ basic-bar-charts.png
  
  
 
