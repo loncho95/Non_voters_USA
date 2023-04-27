@@ -41,12 +41,15 @@ Overall, analyzing the behavior and opinions of US citizens leading up to the el
 # A link to your dataset(s) and a screenshot of the metadata, if it exits: https://github.com/fivethirtyeight/data/tree/master/non-voters
 
 # Three or four screenshots of relevant, inspiring visualizations that show your creative idea.
- [Basic bar charts:](https://github.com/loncho95/Non_voters_USA/blob/main/visual-inspirations/basic-bar-charts.png)
- [Doughnut charts:](https://github.com/loncho95/Non_voters_USA/blob/main/visual-inspirations/doughnut-charts-mousehover.png)
- [Heatmap charts:](https://github.com/loncho95/Non_voters_USA/blob/main/visual-inspirations/heatmap-chart-mousehover.png)
+- Basic bar charts:
+![image](https://github.com/loncho95/Non_voters_USA/blob/main/visual-inspirations/basic-bar-charts.png)
+- Doughnut charts:
+![image](https://github.com/loncho95/Non_voters_USA/blob/main/visual-inspirations/doughnut-charts-mousehover.png)
+- Heatmap charts:
+![image](https://github.com/loncho95/Non_voters_USA/blob/main/visual-inspirations/heatmap-chart-mousehover.png)
  
 # A sketch of the final design:
- [Final sketch:](https://github.com/loncho95/Non_voters_USA/blob/main/final-design-sketch.jpeg)
+ ![image](https://github.com/loncho95/Non_voters_USA/blob/main/final-design-sketch.jpeg)
 
 # A link to the primary GitHub Repository where you´ll be housing your work: [https://github.com/loncho95/Non_voters_USA](https://github.com/loncho95/Non_voters_USA)
 
