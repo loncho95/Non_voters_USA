@@ -49,7 +49,7 @@ Overall, analyzing the behavior and opinions of US citizens leading up to the el
 ![image](https://github.com/loncho95/Non_voters_USA/blob/main/visual-inspirations/heatmap-chart-mousehover.png)
  
 # A sketch of the final design:
- ![image](https://github.com/loncho95/Non_voters_USA/blob/main/final-design-sketch.jpeg)
+ ![image](https://github.com/loncho95/Non_voters_USA/blob/main/final-design-sketch.png)
 
 # A link to the primary GitHub Repository where you´ll be housing your work: [https://github.com/loncho95/Non_voters_USA](https://github.com/loncho95/Non_voters_USA)
 
