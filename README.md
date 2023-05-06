@@ -44,12 +44,12 @@ Overall, analyzing the behavior and opinions of US citizens leading up to the el
 - Basic bar charts:
 ![image](https://github.com/loncho95/Non_voters_USA/blob/main/Resources/visual-inspirations/basic-bar-charts.png)
 - Doughnut charts:
-![image](https://github.com/loncho95/Non_voters_USA/blob/Resources/visual-inspirations/doughnut-charts-mousehover.png)
+![image](https://github.com/loncho95/Non_voters_USA/blob/main/Resources/visual-inspirations/doughnut-charts-mousehover.png)
 - Heatmap charts:
-![image](https://github.com/loncho95/Non_voters_USA/blob/Resources/visual-inspirations/heatmap-chart-mousehover.png)
+![image](https://github.com/loncho95/Non_voters_USA/blob/main/Resources/visual-inspirations/heatmap-chart-mousehover.png)
  
 # A sketch of the final design:
- ![image](https://github.com/loncho95/Non_voters_USA/blob/Resources/final-design-sketch.png)
+ ![image](https://github.com/loncho95/Non_voters_USA/blob/main/Resources/visual-inspirations/final-design-sketch.png)
 
 # A link to the primary GitHub Repository where you´ll be housing your work: [https://github.com/loncho95/Non_voters_USA](https://github.com/loncho95/Non_voters_USA)
 
