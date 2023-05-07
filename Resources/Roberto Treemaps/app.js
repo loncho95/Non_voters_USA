@@ -1,4 +1,4 @@
-d3.csv('../database/nonvoters_data_clean.csv').then(function(rows) {
+d3.csv('../data_cleaning/nonvoters_data_clean.csv').then(function(rows) {
 
   // Roll up the data by income_cat and count the number of occurrences
   var incomeCounts = d3.rollup(rows, 
