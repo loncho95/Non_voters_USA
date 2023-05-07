@@ -1,43 +1,34 @@
-d3.csv('../data_cleaning/nonvoters_data_clean.csv').then(function(rows) {
+   // Load the CSV file
+   d3.csv("../data_cleaning/nonvoters_data_clean.csv").then(function(data) {
 
-  // Roll up the data by income_cat and count the number of occurrences
-  var incomeCounts = d3.rollup(rows, 
-    v => v.length,  // count the number of occurrences
-    d => d.income_cat  // group by income_cat
-  );
-
-  console.log(incomeCounts);
-
-  function unpack(rows, keys) {
-    return rows.map(function(row) { 
-      return keys.map(function(key) {
-        return row[key]
-      })
-    });
-  }
-
-  function getIncomeLevel(income_cat) {
-    var count = incomeCounts.get(income_cat);
-    if (income_cat == 1) {
-      return { level: 'Less than $40K', count: count };
-    } else if (income_cat == 2) {
-      return { level: '$40- $75K', count: count };
-    } else if (income_cat == 3) {
-      return { level: '$75 - $125K', count: count };
-    } else {
-      return { level: '$125K or more', count: count };
-    }
-  }
+    var incomeValues = [75, 50, 40, 35]; 
+    var incomeLabels = ["< $40K", "$40-$75K", "$75-$125K", "> $125K"]; 
+    var incomeParents = ["Income", "Income", "Income", "Income"]; 
+    
+    var educationValues = [60, 40, 50]; 
+    var educationLabels = ["College", "High school or less", "Some college"]; 
+    var educationParents = ["Education Level", "Education Level", "Education Level"]; 
+    
+    var raceValues = [40, 30, 20, 60]; 
+    var raceLabels = ["Black", "Hispanic", "Others", "White"]; 
+    var raceParents = ["Race", "Race", "Race", "Race"]; 
+    
+    var genderValues = [70, 30]; 
+    var genderLabels = ["Female", "Male"]; 
+    var genderParents = ["Gender", "Gender"]; 
+    
+    var values = [225, 150, 150, 100, 75, 50, 40, 35, 60, 40, 50, 40, 30, 20, 60, 70, 30]; 
+    var labels = ["VOTER", "Income", "< $40K", "$40-$75K", "$75-$125K", "> $125K", "Education Level", "College", "High school or less", "Some college", "Race", "Black", "Hispanic", "Others", "White", "Gender", "Female", "Male"]; // all labels
+    var parents = ["", "VOTER", "Income", "Income", "Income", "Income", "VOTER", "Education Level", "Education Level", "Education Level", "VOTER", "Race", "Race", "Race", "Race", "VOTER", "Gender", "Gender"]; // all parents
+    
+    var data = [{
+      type: 'treemap',
+      values: values,
+      labels: labels,
+      parents: parents,
+      marker: {colorscale: 'Greens'}
+    }];    
   
-  var data = [{
-    type: "treemap",
-    ids: unpack(rows, ['educ', 'race', 'gender', 'income_cat']),
-    labels: ['Education Level', 'Race', 'Gender', 'Income Category'],
-    parents: ['', '', '', ''],
-    level: getIncomeLevel(rows.income_cat)
-  }];
-  
-  Plotly.newPlot('treemap', data);
+Plotly.newPlot('treemap', data)
+
 });
-
-
