@@ -1,4 +1,4 @@
-#  What do non-voters look like in the USA? (*Project 3*)
+#  What non-voters look like in the USA (*Project 3*)
 
 This repository contains a visualization project that depicts some of the most interesting results of a survey about American citizens who tend not to vote.
 
@@ -12,7 +12,7 @@ Roberto Gerónimo Barrón Olvera [@barronr03](https://github.com/barronr03)
 
 ## Repository and project description
 
-Is democracy still an effective political system in the 21st century? While that question can have an unimaginable number of answers, what is clear is that nation states need to better understand how it works nowadays and how it is constantly evolving. Just before the 2020 presidential elections in the US, Ipsos, contracted by FiveThirtyEight, polled American citizens online about their voting opinions and behavious in order to have a clearer picture of the electorate. This poll is the perfect oportunity to analyze democracy, as by analyzing the behavior and opinions of US citizens leading up to upcoming elections, people can better understand the current situation of political systems. But... *Why America?*
+Many people debate whether democracy is still an effective political system in the 21st century. While that question can have an unimaginable number of answers, what is clear is that nation states need to better understand how it works nowadays and how it is constantly evolving. Just before the 2020 presidential elections in the US, Ipsos, contracted by FiveThirtyEight, polled American citizens online about their voting opinions and behavious in order to have a clearer picture of the electorate. This poll is the perfect oportunity to analyze democracy, as by analyzing the behavior and opinions of US citizens leading up to upcoming elections, people can better understand the current situation of political systems. We chose America for various reasons, all of which are outline in our objectives and rationale.
 
 ### Our objectives:
 
@@ -21,9 +21,9 @@ Is democracy still an effective political system in the 21st century? While that
 - Finally, understanding the behavior and opinions of US citizens is important for promoting democratic values and principles. In a democracy, it is essential that citizens are informed, engaged, and included in the political process. By analyzing their behavior and opinions, we can identify areas where there may be a lack of understanding, engagement and/or inclusion, and develop strategies to better promote greater participation and civic engagement.
 Overall, analyzing the behavior and opinions of US citizens leading up to the elections is an important and timely topic that has significant implications for the country and the world at large.
 
-### Why did we choose this topic?
+### Personal reasons why we chose this topic:
 
-Given that the next US and Mexico presidential elections are fast approaching, we know that democracy, political behavior, and opinions are not just a hot topic, but the key to understand the possible effects the elections might have on society in the coming years.
+We are data analysts who have training either in social science or economics. Our background conects us in one way or another to politics. Additionally, given that the next US and Mexico presidential elections are fast approaching, we know that democracy, political behavior, and opinions are not just a hot topic, but the key to understand the possible effects the elections might have on society in the coming years.
 
 ### Our project's rationale:
 
@@ -58,7 +58,16 @@ We edited the layout while developing the dashboard due to two main reasons: one
 
 #### Creating a tailored API:
 
-We used SQL, the SQLAlchemy ORM, [the Quick Database Diagrams (QuickDBD) app](https://www.quickdatabasediagrams.com/) Python, Pandas, Flask, and Flask-CORS to first, clean the data, then, build an Entity Relationship Diagram (ERD), a schema, and a local database, and last, create an API with personalized routes for each of the questions. At the end, 8 unique end routes were created (one to display the whole database, another one to include all the demographic data about the respondents, four to reestructure information from four of those nine questions, and a final one to locally run the dashboard with Flask-CORS. All our code is thoroughly commented, so that you understand what each piece is doing.
+We used SQL, the SQLAlchemy ORM, [the Quick Database Diagrams (QuickDBD) app](https://www.quickdatabasediagrams.com/) Python, Pandas, Flask, and Flask-CORS to first, clean the data, then, build an Entity Relationship Diagram (ERD), a schema, and a local database, and last, create an API with personalized routes for each of the questions. The data was cleaned, as it was fully codified with integers —*some variables were strings and some others were integers in the original database*—, and we got rid of data errors, such as '-1', which were assumed to be typos, since the original survey did not consider '-1' to be an answer at all in any question. Therefore, we converted them to positive '1'. After that, we created 8 unique end routes (one to display the whole database, another one to include all the demographic data about the respondents, four to reestructure information from four of those nine questions, and a final one to locally run the dashboard with Flask-CORS). The routes created were the following:
+- / <--- *This is the main route of the API where the user finds information about all the other routes.*
+- /api/index/ <--- *This route leads to the main file of our dashboard: index.html.*
+- /api/nonvoters/ <--- *This route has the complete JSON of our clean database.*
+- /api/q3/ <--- *This route takes you to the JSON of question 3 (our first heatmap).*
+- /api/q4/ <--- *This route leads to the JSON of question 4 (our second heatmap).*
+- /api/q5/ <--- *This route has the JSON of question 5 (our first doughnut chart).*
+- /api/q30/ <--- *This route gets you to the JSON of question 30 (our second doughnut chart).*
+- /api/treemap/ <--- *This route leads to the JSON of the demographic questions that were graphed together as a treemap.*
+All our code is thoroughly commented, so that you understand what each piece is doing.
 
 #### Charting:
 
@@ -75,6 +84,11 @@ We used JavaScript and HTML to create the interactive data visualizations mentio
 ![image](https://github.com/loncho95/Non_voters_USA/blob/0c642638b9ccb17d8c223e4eece635b92e28e0bd/Resources/dashboard-images/dashboard-5.png)
 ![image](https://github.com/loncho95/Non_voters_USA/blob/0c642638b9ccb17d8c223e4eece635b92e28e0bd/Resources/dashboard-images/dashboard-6.png)
 
+#### User testing:
+3 members of our team loaded the database, API, and dashboard locally in our computers and together we debugged it until it ran. The only error we encountered had to do with the database. It has to be imported, as described in the *Schema.sql* file and then, because we used pgAdmin4 to import it, we had to connect to a PostgreSQL engine. Once we found how to do so, we could run all the files, and ultimately the dashboard.
+
+#### Presentation:
+It took place via Zoom on 8th May 2023. You can find the slide deck above. It's titled: *''*, and it's a Microsoft PowerPoint file.
 
 ### Conclusions:
 
@@ -82,6 +96,7 @@ First of all, our dashboard is an efficient tool for visualizing key insights re
 Moreover, some notable similarities in the views of different statements among non-voters were that they tend to view society as becoming too soft and femenine and that the media is more interested in money than communicating the truth. Non-voters also tend believe that politicians do not care about them, at least in a higher proportion than regular voters. Another trend is that non-voters tend to have a higher perception that elections and public or government institutions have little impact on their lives. This is a significant concern, as it highlights a potential lack of engagement, trust, and probably *inclusion* in the democratic process.
 Finally, our dashboard strongly suggests a reason for not voting: a higher proportion of non-voters believe that, regardless of the election results, things will remain the same. This sentiment is less prevalent among regular voters.
 A key takeaway of this project is that future analyses need to delve even more into more characteristics of non-voters, not only more qualitatively, but also they need to study the interaction between the democratic system and the citizens.
+More personally, we feel that we achieved the majority of our goals and grew wiser, more knowledgeable, and more skilfull, so we are satisfied with our results.
 
 ### The *Resources* folder:
 
