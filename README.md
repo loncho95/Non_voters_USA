@@ -8,7 +8,7 @@ Overall, analyzing the behavior and opinions of US citizens leading up to the el
 
 ## Repository description
 ### Selecting a topic 
-Given that the elections in the US are approaching we have decided analyze the behavior and opinions. of the US citizens.
+Given that the elections in the US are approaching we have decided analyze the behavior and opinions of the US citizens.
 ### Finding a dataset 
 We have selected a survey conducted Ipsos’s KnowledgePanel, a probability-based online panel that is recruited to be representative of the U.S. population. The poll was conducted from Sept. 15 to Sept. 25 among a sample of U.S. citizens that oversampled young, Black and Hispanic respondents, with 8,327 respondents, and was weighted according to general population benchmarks for U.S. citizens from the U.S. Census Bureau’s Current Population Survey March 2019 Supplement. The voter file company Aristotle then matched respondents to a voter file to more accurately understand their voting history using the panelist’s first name, last name, zip code, and eight characters of their address, using the National Change of Address program if applicable. Sixty-four percent of the sample (5,355 respondents) matched, although we also included respondents who did not match the voter file but described themselves as voting “rarely” or “never” in our survey, so as to avoid underrepresenting nonvoters, who are less likely to be included in the voter file to begin with. We dropped respondents who were only eligible to vote in three elections or fewer.
 
