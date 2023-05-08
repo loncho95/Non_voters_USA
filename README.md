@@ -1,57 +1,99 @@
-# Non voters USA (Project 3)
-## About
-Analyzing the behavior and opinions of US citizens leading up to the upcoming elections is an important and relevant topic for several reasons.
-Firstly, the US is one of the largest democracies in the world, and its political system has a significant impact on the global political landscape. Understanding the preferences and opinions of US citizens can help us gain insight into the political climate of the country, and the potential impact of the election outcomes on domestic and international affairs.
-Secondly, analyzing the behavior and opinions of US citizens can help political parties, candidates, and policymakers tailor their campaigns and policies to better align with the needs and expectations of voters. By understanding what issues are most important to voters, for example, political parties can develop more effective platforms that resonate with the electorate.
-Finally, understanding the behavior and opinions of US citizens is important for promoting democratic values and principles. In a democracy, it is essential that citizens are informed and engaged in the political process. By analyzing their behavior and opinions, we can identify areas where there may be a lack of understanding or engagement, and develop strategies to encourage greater participation and civic engagement.
+#  What do non-voters look like in the USA? (*Project 3*)
+
+This repository contains a visualization project that depicts some of the most interesting results of a survey about American citizens who tend not to vote.
+
+## Authors
+
+Daniel Ramón Murillo Antuna [@daniel-r-murillo-antuna](https://www.github.com/daniel-r-murillo-antuna)<br>
+Luis Paul Garay Acosta [@PaulGaray777](https://github.com/PaulGaray777)<br>
+Jorge Alonso Lozano Tena [@loncho9](https://github.com/loncho9)<br>
+Roberto Gerónimo Barrón Olvera [@barronr03](https://github.com/barronr03)
+
+
+## Repository and project description
+
+Is democracy still an effective political system in the 21st century? While that question can have an unimaginable number of answers, what is clear is that nation states need to better understand how it works nowadays and how it is constantly evolving. Just before the 2020 presidential elections in the US, Ipsos, contracted by FiveThirtyEight, polled American citizens online about their voting opinions and behavious in order to have a clearer picture of the electorate. This poll is the perfect oportunity to analyze democracy, as by analyzing the behavior and opinions of US citizens leading up to upcoming elections, people can better understand the current situation of political systems. But... *Why America?*
+
+### Our objectives:
+
+- Firstly, the US is one of the largest democracies in the world, and its political system has a significant impact on the global political landscape. Understanding the preferences and opinions of US citizens can help us gain insight into the political climate of the country, the current situation of democracy as a political system, and the potential impact of the election outcomes on domestic and international affairs.
+- Secondly, analyzing the behavior and opinions of US citizens can help political parties, candidates, and policymakers tailor their campaigns and policies to better align with the needs and expectations of voters. By understanding what issues are most important to voters, for example, political parties can develop more effective platforms that resonate with the electorate.
+- Finally, understanding the behavior and opinions of US citizens is important for promoting democratic values and principles. In a democracy, it is essential that citizens are informed, engaged, and included in the political process. By analyzing their behavior and opinions, we can identify areas where there may be a lack of understanding, engagement and/or inclusion, and develop strategies to better promote greater participation and civic engagement.
 Overall, analyzing the behavior and opinions of US citizens leading up to the elections is an important and timely topic that has significant implications for the country and the world at large.
 
-## Repository description
-### Selecting a topic 
-Given that the elections in the US are approaching we have decided analyze the behavior and opinions of the US citizens.
-### Finding a dataset 
-We have selected a survey conducted Ipsos’s KnowledgePanel, a probability-based online panel that is recruited to be representative of the U.S. population. The poll was conducted from Sept. 15 to Sept. 25 among a sample of U.S. citizens that oversampled young, Black and Hispanic respondents, with 8,327 respondents, and was weighted according to general population benchmarks for U.S. citizens from the U.S. Census Bureau’s Current Population Survey March 2019 Supplement. The voter file company Aristotle then matched respondents to a voter file to more accurately understand their voting history using the panelist’s first name, last name, zip code, and eight characters of their address, using the National Change of Address program if applicable. Sixty-four percent of the sample (5,355 respondents) matched, although we also included respondents who did not match the voter file but described themselves as voting “rarely” or “never” in our survey, so as to avoid underrepresenting nonvoters, who are less likely to be included in the voter file to begin with. We dropped respondents who were only eligible to vote in three elections or fewer.
+### Why did we choose this topic?
+
+Given that the next US and Mexico presidential elections are fast approaching, we know that democracy, political behavior, and opinions are not just a hot topic, but the key to understand the possible effects the elections might have on society in the coming years.
+
+### Our project's rationale:
+
+There are currently very few open source tools available on the web to visualize recent political trends, and while there are some available, those tools tend to be designed by their own researchers and data team. Therefore, many of the tools available make it hard for citizens to be as objective as possible. We wanted to contribute initially with a more neutral app that could be used to visualize the FiveThirtyEight data, but that could also be scalable and applicable to similar datasets generated by different sources.
+
+### Finding "the" dataset:
+
+Polls tend to focus on voters, especially on the months before an election. However, the FiveThirtyEight dataset includes data from citizens who don't often cast their vote. Moreover, this survey considered a probability-based online panel that was recruited to be representative of the US population. Representativeness is very hard to achieve, particularly online. This poll surpassed that limitation by conducting poll from September 15th to the 25th, 2020. They also made sure to correct the oversampling of young, Black and Hispanic respondents, and weighted the responses according to the general population benchmarks from the US Census Bureau’s Current Population Survey March 2019 Supplement. FiveThirtyEight asserted that the voter file company Aristotle then matched respondents to a voter file to more accurately understand their voting history and included respondents who did not match the voter file, but described themselves as voting “rarely” or “never”. This survey avoided underrepresenting non-voters, who, as previously highlighted, are less likely to be included in the voter file to begin with.
 
 ### The *Non_voters_USA* project displays:
-This repository showcases a mini-project where we utilized JavaScript and HTML to create interactive data visualizations. The project is powered by an API that integrates Python for efficient data structuring, and various end routes were used to achieve the desirable format of the JSONs. Previously, ERD was defined, then the schema was queried in SQL (pg admin) and we employed SQLalchemy to reflect the database in our API, created with Flask.
 
-## Conclusions
-After the analysis made...
+This repository showcases a dashboard that portrays the data of 9 crucial questions of the poll that relate to our objectives. The building of the dashboard went through different stages:
 
-Based on the information presented, we can conclude that our dashboard is an efficient tool for visualizing key insights related to voter demographics. While the data has not been statistically validated, it does suggest some important trends that can inform future research and outreach efforts.
+#### Creating a tailored API:
 
-•	There is a clear difference in education levels between regular voters and those who rarely or never vote. Specifically, regular voters have a higher proportion (46% vs 29% of non-voters) of individuals with a college degree, while non-voters tend to have a higher proportion (44% vs 23% of regular voters) of individuals with a high school education or less.
+We used SQL, Python, and Flask to first, clean the data, then, build an Entity Relationship Diagram (ERD), a schema, and a local database, and last, create an API with personalized routes for each of the questions. At the end, 8 unique end routes were created (one to display the whole database, another one to include all the demographic data about the respondents, four to reestructure information from four of those nine questions, and a final one to locally run the dashboard with Flask-CORS. All our code is thoroughly commented, so that you understand what each piece is doing.
 
-•	Exists a significant difference in income levels between these two groups: it seems the more well-off a person is, the more likely they are to be an always voter.
+#### Charting:
 
-•	Non-voters tend to have higher proportions of ethnic minorities than frequent/always voters and there is no significative difference on gender
+We wanted to use the clearest and richest visualizations, and some questions, such as number 3 and 4, are so complex that considering a chart with only two axes would have led us to lose most of the valuable information. Therefore, we chose a treemap to represent the demographic questions, heatmaps to depict questions that had three axes, and doughnut charts to graph easier to read information, which had at least one axis filled with string values.
 
-•	We can conclude that there are some notable similarities in the views of different statements among non-voters:
-  
-  o	A higher proportion of non-voters believe that society is becoming too soft and that the media is more interested in money than communicating the truth. 
-  
-  o	Non-voters tend to hold the view that politicians don't care about them in a higher proportion compared to regular voters.
+#### Connecting the API to our charts = dashboarding:
 
-•	Another trend observed is that non-voters tend to have a higher perception that elections and public/government institutions have little to impact on their lives. This is a significant concern, as it highlights a potential lack of engagement and trust in the democratic process.
+We used JavaScript and HTML to create the interactive data visualizations mentioned in the previous paragraph. The API integrates Python for efficient data structuring, and restructures the data in a way that the end routes generate the desirable format of the JSONs. More importantly, we restructured the data so that we could compare the answers of three voter categories defined by the researchers of this survey: 'always' —also called *regular voters* in this project— voters or citizens who always vote, 'sporadic' voters or citizens who voted in at least two elections, but fewer than all-but-one, and 'rarely/never' voters —also called *non-voters* in this project— or those who voted in one or none of the elections in which they were eligible to vote. The dashboard lets the user easily filter the charts by those three categories. Once again, all our code is thoroughly commented, so that you find it easy to understand and scale.
 
-•	Additionally, our dashboard highlights an important indirect reason for not voting. Specifically, a higher proportion of non-voters believe that regardless of the election results, things will remain the same. This sentiment is less prevalent among regular voters.
+![image](https://github.com/loncho95/Non_voters_USA/blob/0c642638b9ccb17d8c223e4eece635b92e28e0bd/Resources/dashboard-images/dashboard-1.png)
+![image](https://github.com/loncho95/Non_voters_USA/blob/0c642638b9ccb17d8c223e4eece635b92e28e0bd/Resources/dashboard-images/dashboard-2.png)
+![image](https://github.com/loncho95/Non_voters_USA/blob/0c642638b9ccb17d8c223e4eece635b92e28e0bd/Resources/dashboard-images/dashboard-3.png)
+![image](https://github.com/loncho95/Non_voters_USA/blob/0c642638b9ccb17d8c223e4eece635b92e28e0bd/Resources/dashboard-images/dashboard-4.png)
+![image](https://github.com/loncho95/Non_voters_USA/blob/0c642638b9ccb17d8c223e4eece635b92e28e0bd/Resources/dashboard-images/dashboard-5.png)
+![image](https://github.com/loncho95/Non_voters_USA/blob/0c642638b9ccb17d8c223e4eece635b92e28e0bd/Resources/dashboard-images/dashboard-6.png)
 
+
+### Conclusions:
+
+First of all, our dashboard is an efficient tool for visualizing key insights related to voter demographics. Second, the data outlines important trends that can inform future research and outreach efforts. The most important trends we found include a clear difference in education levels between regular voters and those who rarely or never vote. Specifically, regular voters have a higher proportion (46% vs. 29% of non-voters) of individuals with a college degree, while non-voters tend to have a higher proportion (44% vs. 23% of regular voters) of individuals with a high school education or less. There is a significant difference in income levels between those two groups: it seems that non-voters are more likely to be worse off than those who always vote. Furthermore, non-voters tend to have higher proportions of ethnic minorities than *always* voters, and there is no perceptible difference based on gender.
+Moreover, some notable similarities in the views of different statements among non-voters were that they tend to view society as becoming too soft and femenine and that the media is more interested in money than communicating the truth. Non-voters also tend believe that politicians do not care about them, at least in a higher proportion than regular voters. Another trend is that non-voters tend to have a higher perception that elections and public or government institutions have little impact on their lives. This is a significant concern, as it highlights a potential lack of engagement, trust, and probably *inclusion* in the democratic process.
+Finally, our dashboard strongly suggests a reason for not voting: a higher proportion of non-voters believe that, regardless of the election results, things will remain the same. This sentiment is less prevalent among regular voters.
+A key takeaway of this project is that future analyses need to delve even more into more characteristics of non-voters, not only more qualitatively, but also they need to study the interaction between the democratic system and the citizens.
+
+### The *Resources* folder:
+
+It contains the dashboard images, the files used to clean the data, the full poll and our selected questions, the images that inspired our visualizations, and the original CSV file of the poll.
+
+### The *app* folder:
+
+It has the API we developed, a clean CSV with the data we used, and the HTML and JavaScript codes of our dashboard.
+
+### The *database* folder:
+
+It contains the physical ERD of our database and the schema.
+
+### Final words:
+
+We hope you, user, find our dashboard of good use because we know we have.
 
 ## Data Reference
-From Github repository: [https://github.com/fivethirtyeight/data/tree/master/non-voters]
-## Authors
-Daniel Ramón Murillo Antuna [@daniel-r-murillo-antuna](https://www.github.com/daniel-r-murillo-antuna)<br />
-Luis Paul Garay Acosta [@PaulGaray777](https://github.com/PaulGaray777)<br />
-Jorge Alonso Lozano Tena [https://github.com/loncho9] <br />
-Roberto Gerónimo Barrón Olvera [@barronr03](https://www.github.com/barronr03)<br />
+Amelia Thomson-DeVeaux, Jasmine Mithani and Laura Bronner's *Why Many Americans Don't Vote*. Accessed on 07 May 2023 from [https://projects.fivethirtyeight.com/non-voters-poll-2020-election/](https://projects.fivethirtyeight.com/non-voters-poll-2020-election/)
+
+The FiveThirtyEight dataset Github repository: [https://github.com/fivethirtyeight/data/tree/master/non-voters](https://github.com/fivethirtyeight/data/tree/master/non-voters)
+
+```#Thank you for reading me!```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 Please make sure to update tests as appropriate.
-## Project 3
-[Github](https://github.com/loncho95/Non_voters_USA](https://github.com/loncho95/Non_voters_USA)<br />
-```#Thank you for reading me!```
 
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 
 
