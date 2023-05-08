@@ -19,13 +19,21 @@ This repository showcases a mini-project where we utilized JavaScript and HTML t
 After the analysis made...
 
 Based on the information presented, we can conclude that our dashboard is an efficient tool for visualizing key insights related to voter demographics. While the data has not been statistically validated, it does suggest some important trends that can inform future research and outreach efforts.
+
 •	There is a clear difference in education levels between regular voters and those who rarely or never vote. Specifically, regular voters have a higher proportion (46% vs 29% of non-voters) of individuals with a college degree, while non-voters tend to have a higher proportion (44% vs 23% of regular voters) of individuals with a high school education or less.
+
 •	Exists a significant difference in income levels between these two groups: it seems the more well-off a person is, the more likely they are to be an always voter.
+
 •	Non-voters tend to have higher proportions of ethnic minorities than frequent/always voters and there is no significative difference on gender
+
 •	We can conclude that there are some notable similarities in the views of different statements among non-voters:
+  
   o	A higher proportion of non-voters believe that society is becoming too soft and that the media is more interested in money than communicating the truth. 
+  
   o	Non-voters tend to hold the view that politicians don't care about them in a higher proportion compared to regular voters.
+
 •	Another trend observed is that non-voters tend to have a higher perception that elections and public/government institutions have little to impact on their lives. This is a significant concern, as it highlights a potential lack of engagement and trust in the democratic process.
+
 •	Additionally, our dashboard highlights an important indirect reason for not voting. Specifically, a higher proportion of non-voters believe that regardless of the election results, things will remain the same. This sentiment is less prevalent among regular voters.
 
 
