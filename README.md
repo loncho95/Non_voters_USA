@@ -44,16 +44,17 @@ This repository showcases a dashboard that portrays the data of 9 crucial questi
 4. Reearch question to answer: What are the differences between the profiles per type of voter (Rarely or never votes; Sometimes votes; and always votes). <--- *Question answered*
 5. Dataset to be used: We have chosen a survey conducted by Ipsos and FiftyThirtyEight, a probability-based online panel that was recruited to be representative of the US. Link to GitHub: https://github.com/fivethirtyeight/data/tree/master/non-voters <--- *Dataset used*
 6. Rough breakdown of tasks: <--- *Accurate*
-a. Visual inspirations and dashboard sketch.
-b. Data cleansing of the original dataset.
-c. Database creation (SQL)
-d. Creation of the API.
-e. Dashboard coding (JavaScript)
-f. User testing.
-g. Presentation.
+- Visual inspirations and dashboard sketch.
+- Data cleansing of the original dataset.
+- Database creation (SQL)
+- Creation of the API.
+- Dashboard coding (JavaScript)
+- User testing.
+- Presentation.
 
 #### Project development and changes:
-The original sketch was this one: ![image](https://github.com/loncho95/Non_voters_USA/blob/main/Resources/visual-inspirations/final-design-sketch.png)
+The original sketch was this one: <br>
+![image](https://github.com/loncho95/Non_voters_USA/blob/main/Resources/visual-inspirations/final-design-sketch.png) <br>
 We edited the layout while developing the dashboard due to two main reasons: one, aesthetics, and two, some charts were not as appropriate to be included or didn't give as rich of an information. We realized that we could not used a bubble chart because the x axis of all the questions we were interested in were either categorical variables or integers. Therefore, a bubble chart was not the way to go. We thought of replacing the bubble chart with bar charts, but we decided against it because the doughnut charts are more visually accessible and the user tends to get the data we wanted to portray quicker. We wanted to create a minimalist dashboard, but we definitely wanted to add more color and information. However, in general, time was not enough to add more information and improve the layout much more than we did, so, in that regard, we set the bar too high. On a similar note, we wanted to use the Chart.JS library to graph, but we ended up using different ones because we found it too hard to configure —*we suspect it had to do with the new version that came out not long ago*. Moreover, the visualizations of the sketch and the way of stacking the information was too inelegant and hard to understand initally. We think we improved a lot in that area once we finished out dashboard.
 
 #### Creating a tailored API:
