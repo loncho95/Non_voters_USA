@@ -1,51 +1,51 @@
-# import the dependencies.
-import datetime as dt
+# Imported the dependencies needed:
 import pandas as pd
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-import json
 from flask_cors import CORS
 
-# import Flask, jsonify and request:
+# Imported Flask, jsonify, request, and render_template to create and run the API:
 from flask import Flask, jsonify, request, render_template
 
-# database setup
+# Set up the database:
 engine = create_engine("postgresql+psycopg2://postgres:postgres@localhost/project 3")
 
-# reflect an existing database into a new model
+# Reflected the existing database into a new model:
 Base = automap_base()
 
-# reflect the tables
+# Reflected the tables:
 Base.prepare(autoload_with=engine)
 
 Base.classes.keys()
 
-# Save references to the table
+# Saved the references to the main table:
 Nonvoter = Base.classes.responses
 
-# Create an app, being sure to pass __name__:
+# Created an app making sure to pass __name__:
 app = Flask(__name__)
 CORS(app)
 
-# flask routes
-# define our end points
-# /index route: what to do when a user hits the index route
+# Flask routes (there are eight):
+
+# 1. Main route:
+# Defined the end point:
 @app.route("/")
 def home():
     print("Server received request for 'Home' page...")
     return (
-        f"Welcome to the Nonvoters API! for proyect 3<br/>"
-        f"/api/index/ this is our route for the index.html file<br/>"
-        f"/api/nonvoters/ this roue is the complete json of the clean database<br/>"
-        f"/api/q3/ this route corresponds to question 3<br/>"
-        f"/api/q4/ this route corresponds to question 4<br/>"
-        f"/api/q5/ this route corresponds to question 5<br/>"
-        f"/api/q30/ this route corresponds to question 30<br/>"
-        f"/api/treemap/ this route corresponds to the demographic question intented for the treemap visualization<br/>"
+        f"<h1>Welcome to the Non-voters USA API for <i>Project 3</i>!</h1><br/>"
+        f"/api/index/ <- <i>This route leads to the main file of our dashboard: index.html</i><br/>"
+        f"/api/nonvoters/ <- <i>This route has the complete JSON of our clean database</i><br/>"
+        f"/api/q3/ <- <i>This route takes you to the JSON of question 3 (our first heatmap)</i><br/>"
+        f"/api/q4/ <- <i>This route leads to the JSON of question 4 (our second heatmap)</i><br/>"
+        f"/api/q5/ <- <i>This route has the JSON of question 5 (our bar chart)</i><br/>"
+        f"/api/q30/ <- <i>This route gets you to the JSON of question 30 (our doughnut chart)</i><br/>"
+        f"/api/treemap/ <- <i>This route leads to the JSON of the demographic questions that were graphed together as a treemap</i><br/>"
         )
 
-# create Flask routes to retrieve data from your database
+# 2. JSON of our clean database:
+# Created a Flask route to retrieve the data from the SQL database:
 @app.route('/api/nonvoters/')
 
 def get_nonvoters():
@@ -76,10 +76,13 @@ def get_nonvoters():
         nonvoter_dict['income_cat'] = result.income_cat
         nonvoter_dict['voter_category'] = result.voter_category
         nonvoters.append(nonvoter_dict)
-    # return the JSON representation of the list of dictionaries
+    # Returned the JSON representation of the list of dictionaries:
     return jsonify(nonvoters)
 
-# Q3
+
+
+# 3. JSON of question 3:
+# Created a Flask route to retrieve the data for our first heatmap:
 @app.route("/api/q3/")
 def q3():
     main_df = pd.read_csv('nonvoters_data_clean.csv')
@@ -200,7 +203,10 @@ def q3():
     
     return final_q3_dict
 
-# Q4
+
+
+# 4. JSON of question 4:
+# Created a Flask route to retrieve the data for our second heatmap:
 @app.route("/api/q4/")
 def q4():
     main_df = pd.read_csv('nonvoters_data_clean.csv')
@@ -321,15 +327,17 @@ def q4():
     
     return final_q4_dict
 
-# Q5
-# Created Flask route to retrieve data for Q5
+
+
+# 5. JSON of question 5:
+# Created a Flask route to retrieve the data for our bar chart:
 @app.route('/api/q5/')
 def q5():
 
     # Imported the data:
     main_df = pd.read_csv('nonvoters_data_clean.csv')
 
-    # Created a new DataFrame by filtering only the columns relevant to question 30:
+    # Created a new DataFrame by filtering only the columns relevant to question 5:
     q5_df = main_df[['Q5', 'voter_category']]
 
     # Created new DataFrames, one for each voter category by filtering the data of question 5:
@@ -340,22 +348,13 @@ def q5():
     # Generated a sorted question 5 DataFrame for the 'ALWAYS' voter category:
     counted_always_q5_1_df = always_q5_df.loc[always_q5_df['Q5'] == 1].count()
     counted_always_q5_2_df = always_q5_df.loc[always_q5_df['Q5'] == 2].count()
-    counted_always_q5_3_df = always_q5_df.loc[always_q5_df['Q5'] == 3].count()
-    counted_always_q5_4_df = always_q5_df.loc[always_q5_df['Q5'] == 4].count()
-    counted_always_q5_5_df = always_q5_df.loc[always_q5_df['Q5'] == 5].count()
 
     always_q5_1 = round(100 * (counted_always_q5_1_df['Q5'] / always_q5_df['Q5'].count()), 2)
     always_q5_2 = round(100 * (counted_always_q5_2_df['Q5'] / always_q5_df['Q5'].count()), 2)
-    always_q5_3 = round(100 * (counted_always_q5_3_df['Q5'] / always_q5_df['Q5'].count()), 2)
-    always_q5_4 = round(100 * (counted_always_q5_4_df['Q5'] / always_q5_df['Q5'].count()), 2)
-    always_q5_5 = round(100 * (counted_always_q5_5_df['Q5'] / always_q5_df['Q5'].count()), 2)
 
     clean_always_q5_dict = {
-        'Republican': always_q5_1,
-        'Democrat': always_q5_2,
-        'Independent': always_q5_3,
-        'Another party': always_q5_4,
-        'No preference': always_q5_5
+        'Who wins the election really matters': always_q5_1,
+        'Things will pretty much be the same': always_q5_2
     }
 
     clean_always_q5_df = pd.DataFrame(clean_always_q5_dict.items(), columns=['q5_options', 'values'])
@@ -366,22 +365,13 @@ def q5():
     # Generated a sorted question 5 DataFrame for the 'SPORADIC' voter category:
     counted_sporadic_q5_1_df = sporadic_q5_df.loc[sporadic_q5_df['Q5'] == 1].count()
     counted_sporadic_q5_2_df = sporadic_q5_df.loc[sporadic_q5_df['Q5'] == 2].count()
-    counted_sporadic_q5_3_df = sporadic_q5_df.loc[sporadic_q5_df['Q5'] == 3].count()
-    counted_sporadic_q5_4_df = sporadic_q5_df.loc[sporadic_q5_df['Q5'] == 4].count()
-    counted_sporadic_q5_5_df = sporadic_q5_df.loc[sporadic_q5_df['Q5'] == 5].count()
 
     sporadic_q5_1 = round(100 * (counted_sporadic_q5_1_df['Q5'] / sporadic_q5_df['Q5'].count()), 2)
     sporadic_q5_2 = round(100 * (counted_sporadic_q5_2_df['Q5'] / sporadic_q5_df['Q5'].count()), 2)
-    sporadic_q5_3 = round(100 * (counted_sporadic_q5_3_df['Q5'] / sporadic_q5_df['Q5'].count()), 2)
-    sporadic_q5_4 = round(100 * (counted_sporadic_q5_4_df['Q5'] / sporadic_q5_df['Q5'].count()), 2)
-    sporadic_q5_5 = round(100 * (counted_sporadic_q5_5_df['Q5'] / sporadic_q5_df['Q5'].count()), 2)
 
     clean_sporadic_q5_dict = {
-        'Republican': sporadic_q5_1,
-        'Democrat': sporadic_q5_2,
-        'Independent': sporadic_q5_3,
-        'Another party': sporadic_q5_4,
-        'No preference': sporadic_q5_5
+        'Who wins the election really matters': sporadic_q5_1,
+        'Things will pretty much be the same': sporadic_q5_2
     }
 
     clean_sporadic_q5_df = pd.DataFrame(clean_sporadic_q5_dict.items(), columns=['q5_options', 'values'])
@@ -389,30 +379,21 @@ def q5():
     clean_sporadic_q5_dict['voter_category'] = 'sporadic'
     clean_sporadic_q5_dict
 
-    # Generated a sorted question 5 DataFrame for the 'RARELYNEVER' voter category:
+    # Generated a sorted question 5 DataFrame for the 'RARELY/NEVER' voter category:
     counted_rarelynever_q5_1_df = rarelynever_q5_df.loc[rarelynever_q5_df['Q5'] == 1].count()
     counted_rarelynever_q5_2_df = rarelynever_q5_df.loc[rarelynever_q5_df['Q5'] == 2].count()
-    counted_rarelynever_q5_3_df = rarelynever_q5_df.loc[rarelynever_q5_df['Q5'] == 3].count()
-    counted_rarelynever_q5_4_df = rarelynever_q5_df.loc[rarelynever_q5_df['Q5'] == 4].count()
-    counted_rarelynever_q5_5_df = rarelynever_q5_df.loc[rarelynever_q5_df['Q5'] == 5].count()
 
     rarelynever_q5_1 = round(100 * (counted_rarelynever_q5_1_df['Q5'] / rarelynever_q5_df['Q5'].count()), 2)
     rarelynever_q5_2 = round(100 * (counted_rarelynever_q5_2_df['Q5'] / rarelynever_q5_df['Q5'].count()), 2)
-    rarelynever_q5_3 = round(100 * (counted_rarelynever_q5_3_df['Q5'] / rarelynever_q5_df['Q5'].count()), 2)
-    rarelynever_q5_4 = round(100 * (counted_rarelynever_q5_4_df['Q5'] / rarelynever_q5_df['Q5'].count()), 2)
-    rarelynever_q5_5 = round(100 * (counted_rarelynever_q5_5_df['Q5'] / rarelynever_q5_df['Q5'].count()), 2)
 
     clean_rarelynever_q5_dict = {
-        'Republican': rarelynever_q5_1,
-        'Democrat': rarelynever_q5_2,
-        'Independent': rarelynever_q5_3,
-        'Another party': rarelynever_q5_4,
-        'No preference': rarelynever_q5_5
+        'Who wins the election really matters': rarelynever_q5_1,
+        'Things will pretty much be the same': rarelynever_q5_2
     }
 
     clean_rarelynever_q5_df = pd.DataFrame(clean_rarelynever_q5_dict.items(), columns=['q5_options', 'values'])
     clean_rarelynever_q5_dict = clean_rarelynever_q5_df.to_dict()
-    clean_rarelynever_q5_dict['voter_category'] = 'rarelynever'
+    clean_rarelynever_q5_dict['voter_category'] = 'rarely/never'
     clean_rarelynever_q5_dict
 
     final_q5_dict = {'categories': ['always', 'sporadic', 'rarely/never'],
@@ -424,8 +405,8 @@ def q5():
 
 
 
-# Q30
-# Created Flask route to retrieve data for Q30
+# 6. JSON of question 30:
+# Created a Flask route to retrieve the data for the doughtnut chart:
 @app.route('/api/q30/')
 def q30():
 
@@ -492,7 +473,7 @@ def q30():
     clean_sporadic_q30_dict['voter_category'] = 'sporadic'
     clean_sporadic_q30_dict
 
-    # Generated a sorted question 30 DataFrame for the 'RARELYNEVER' voter category:
+    # Generated a sorted question 30 DataFrame for the 'RARELY/NEVER' voter category:
     counted_rarelynever_q30_1_df = rarelynever_q30_df.loc[rarelynever_q30_df['Q30'] == 1].count()
     counted_rarelynever_q30_2_df = rarelynever_q30_df.loc[rarelynever_q30_df['Q30'] == 2].count()
     counted_rarelynever_q30_3_df = rarelynever_q30_df.loc[rarelynever_q30_df['Q30'] == 3].count()
@@ -515,7 +496,7 @@ def q30():
 
     clean_rarelynever_q30_df = pd.DataFrame(clean_rarelynever_q30_dict.items(), columns=['q30_options', 'values'])
     clean_rarelynever_q30_dict = clean_rarelynever_q30_df.to_dict()
-    clean_rarelynever_q30_dict['voter_category'] = 'rarelynever'
+    clean_rarelynever_q30_dict['voter_category'] = 'rarely/never'
     clean_rarelynever_q30_dict
 
     final_q30_dict = {'categories': ['always', 'sporadic', 'rarely/never'],
@@ -527,7 +508,7 @@ def q30():
 
 
 
-# Demographic questions
+# 7. JSON of the demographic questions:
 # Created Flask route to retrieve data for the treemap:
 @app.route('/api/treemap/')
 def treemap():
@@ -648,7 +629,7 @@ def treemap():
     always_treemap_income_cat_1 = round(100 * (counted_always_treemap_income_cat_1_df['income_cat'] / always_treemap_df['income_cat'].count()), 0)
     always_treemap_income_cat_2 = round(100 * (counted_always_treemap_income_cat_2_df['income_cat'] / always_treemap_df['income_cat'].count()), 0)
     always_treemap_income_cat_3 = round(100 * (counted_always_treemap_income_cat_3_df['income_cat'] / always_treemap_df['income_cat'].count()), 0)
-    always_treemap_income_cat_4 = round(100 * (counted_always_treemap_income_cat_4_df['income_cat'] / always_treemap_df['income_cat'].count()), 0)
+    always_treemap_income_cat_4 = (100 * (counted_always_treemap_income_cat_4_df['income_cat'] / always_treemap_df['income_cat'].count()))
 
     clean_always_treemap_income_cat_dict = {
         'Less than $40k': int(always_treemap_income_cat_1),
@@ -788,12 +769,12 @@ def treemap():
     counted_rarelynever_treemap_educ_3_df = rarelynever_treemap_df.loc[rarelynever_treemap_df['educ'] == 3].count()
 
     rarelynever_treemap_educ_1 = round(100 * (counted_rarelynever_treemap_educ_1_df['educ'] / rarelynever_treemap_df['educ'].count()), 0)
-    rarelynever_treemap_educ_2 = round(100 * (counted_rarelynever_treemap_educ_2_df['educ'] / rarelynever_treemap_df['educ'].count()), 0)
+    rarelynever_treemap_educ_2 = (100 * (counted_rarelynever_treemap_educ_2_df['educ'] / rarelynever_treemap_df['educ'].count()))
     rarelynever_treemap_educ_3 = round(100 * (counted_rarelynever_treemap_educ_3_df['educ'] / rarelynever_treemap_df['educ'].count()), 0)
 
     clean_rarelynever_treemap_educ_dict = {
         'College': int(rarelynever_treemap_educ_1),
-        'High school or less': int(rarelynever_treemap_educ_2),
+        'High school or less': int(rarelynever_treemap_educ_2 + 1),
         'Some college': int(rarelynever_treemap_educ_3)
     }
 
@@ -807,13 +788,13 @@ def treemap():
     counted_rarelynever_treemap_race_3_df = rarelynever_treemap_df.loc[rarelynever_treemap_df['race'] == 3].count()
     counted_rarelynever_treemap_race_4_df = rarelynever_treemap_df.loc[rarelynever_treemap_df['race'] == 4].count()
 
-    rarelynever_treemap_race_1 = round(100 * (counted_rarelynever_treemap_race_1_df['race'] / rarelynever_treemap_df['race'].count()), 0)
+    rarelynever_treemap_race_1 = (100 * (counted_rarelynever_treemap_race_1_df['race'] / rarelynever_treemap_df['race'].count()))
     rarelynever_treemap_race_2 = round(100 * (counted_rarelynever_treemap_race_2_df['race'] / rarelynever_treemap_df['race'].count()), 0)
     rarelynever_treemap_race_3 = round(100 * (counted_rarelynever_treemap_race_3_df['race'] / rarelynever_treemap_df['race'].count()), 0)
     rarelynever_treemap_race_4 = round(100 * (counted_rarelynever_treemap_race_4_df['race'] / rarelynever_treemap_df['race'].count()), 0)
 
     clean_rarelynever_treemap_race_dict = {
-        'Black': int(rarelynever_treemap_race_1),
+        'Black': int(rarelynever_treemap_race_1 + 1),
         'Hispanic': int(rarelynever_treemap_race_2),
         'Other/Mixed': int(rarelynever_treemap_race_3),
         'White': int(rarelynever_treemap_race_4)
@@ -846,7 +827,7 @@ def treemap():
     counted_rarelynever_treemap_income_cat_4_df = rarelynever_treemap_df.loc[rarelynever_treemap_df['income_cat'] == 4].count()
 
     rarelynever_treemap_income_cat_1 = round(100 * (counted_rarelynever_treemap_income_cat_1_df['income_cat'] / rarelynever_treemap_df['income_cat'].count()), 0)
-    rarelynever_treemap_income_cat_2 = round(100 * (counted_rarelynever_treemap_income_cat_2_df['income_cat'] / rarelynever_treemap_df['income_cat'].count()), 0)
+    rarelynever_treemap_income_cat_2 = (100 * (counted_rarelynever_treemap_income_cat_2_df['income_cat'] / rarelynever_treemap_df['income_cat'].count()))
     rarelynever_treemap_income_cat_3 = round(100 * (counted_rarelynever_treemap_income_cat_3_df['income_cat'] / rarelynever_treemap_df['income_cat'].count()), 0)
     rarelynever_treemap_income_cat_4 = round(100 * (counted_rarelynever_treemap_income_cat_4_df['income_cat'] / rarelynever_treemap_df['income_cat'].count()), 0)
 
@@ -889,11 +870,15 @@ def treemap():
     return final_treemap_dict
 
 
-# index.html
+
+# 8. JSON of the index HTML file:
+# Returned the file to be able to open it while running the data from the app:
 @app.route('/api/index/')
 def htmlFile():
     return render_template('index.html')
 
-# Run the app:
+
+
+# To run the app:
 if __name__ == "__main__":
     app.run(debug=True)

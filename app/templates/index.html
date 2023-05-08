@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-voters USA</title>
+    <!-- d3.js V6 -->
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <!-- Bootstrap demo -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- HEADER -->
+<div class="bg-$purple"></div>
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Political Data</span>
+    </a>
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="http://127.0.0.1:5000/" class="nav-link" aria-current="page">API Home</a></li>
+      <li class="nav-item"><a href="http://127.0.0.1:5000/api/index/" class="nav-link active" aria-current="page">Dashboard</a></li>
+    </ul>
+  </header>
+<!-- MAIN HERO, COPY, AND DROPDOWN LIST -->
+  <div class="container-lg">
+    <div class="row p-3 pb-0 pe-lg-0 pt-lg-4 align-items-center rounded-3">
+      <div class="col-lg p-3 p-lg-5 pt-lg-3">
+        <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Voters vs. Non-voters in the USA</h1>
+        <p class="lead">Just before the presidential elections of 2020, Ipsos did a poll for FiveThirtyEight. They polled more than 8,000 American voters, and the results shed light on eye-opening statistics about the political climate of the country. The most interesting fact about this survey was that the analysts divided the voting population into three different groups: those who always vote, those who sporadically vote, and those who rarely or never vote. Although the analysts have asserted that Americans aren't likely to fall into any one category, the poll results show clear trends that you can observe in this dashboard. <strong>Would you like to see how different each group of voters is?</strong></p>
+        <div class="d-grid gap-3 d-md-flex justify-content-md-center mb-2 mb-lg-1">
+          <div class="row mt-5">
+            <div class="col-sm">
+              <h5>Please choose the voter category you'd like to see: </h5>
+            </div>
+            <div class="col-sm">
+              <div class="well">
+                <select class="form-select form-select-lg mb-3" id="selDataset" onchange="optionChanged(this.value)"></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="b-example-divider"></div>
+<!-- TREEMAP CHART (DEMOGRAPHIC QUESTIONS) -->
+  <div class="container-lg my-3">
+    <div class="row p-3 pb-0 pe-lg-0 pt-lg-4 align-items-center rounded-3 border shadow-lg">
+      <div class="col-lg p-3 p-lg-5 pt-lg-3 justify-content-center">
+        <h3>Demographic information of the <strong><i id="treemapCategory"></i></strong> voter:</h3>
+        <div class="row">
+          <div class="column">
+            <p>You can hover over the graph to reveal the demographic <strong>percentages</strong> of the typical voter in this category.</p>
+          </div>
+        </div>
+        <div class="row align-items-center justify-content-center gx-3">
+          <div class="col-md">
+            <div id="treemap"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- DOUGHNUT CHARTS (QUESTIONS 5 AND 30) -->
+  <div class="container-lg my-3">
+    <div class="row p-3 pb-0 pe-lg-0 pt-lg-4 align-items-center rounded-3">
+      <div class="col-lg justify-content-center">
+        <h3>Generally speaking, <strong><i id="q30DoughnutCategory"></i></strong> voters see themselves as:</h3>
+        <div class="row justify-content-start">
+          <div class="col align-items-center">
+            <div id="q30Doughnut" style="width: 950px; height: 500px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center rounded-3">
+      <div class="col-lg justify-content-center">
+        <h3>As far as making progress on the important issues facing the country, <strong><i id="q5DoughnutCategory"></i></strong> voters thought about the 2020 presidential elections that:</h3>
+        </div>
+        <div class="row justify-content-start">
+          <div class="col align-items-center">
+            <div id="q5Doughnut" style="width: 950px; height: 500px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- HEATMAPS (QUESTIONS 3 AND 4)-->
+<div class="container-lg my-3">
+  <div class="row p-3 pb-0 pe-lg-0 pt-lg-4 align-items-center rounded-3 border shadow-lg">
+    <div class="col-lg p-3 p-lg-5 pt-lg-3 justify-content-center">
+      <h3>How much do <strong><i id="q3HeatmapCategory"></i></strong> voters agree or disagree with the following statements?</h3>
+      <div class="row">
+        <h5><strong>A:</strong> 'Systemic racism is a problem in the United States.'</h5>
+        <h5><strong>B:</strong> 'Systemic racism in policing is a bigger problem than violence and vandalism in protests.'</h5>
+        <h5><strong>C:</strong> 'Society as a whole has become too soft and feminine.'</h5>
+        <h5><strong>D:</strong> 'The mainstream media is more interested in making money than telling the truth.'</h5>
+        <h5><strong>E:</strong> 'Traditional parties and politicians don't care about people like me.'</h5>
+        <h5><strong>F:</strong> 'The way people talk needs to change with the times to be more sensitive to people with different backgrounds.'</h5>
+          <div class="row">
+            <div id="q3Heatmap"></div>
+          </div>
+          <div class="grid gap-10 row-gap-16">
+            <h3>How much of an impact, if any, do each of the following have on the life of <strong><i id="q4HeatmapCategory"></i></strong> voters?</h3>
+        <div class="row">
+          <h5><strong>A:</strong> 'Elected officials in Washington, D.C. (e.g. the president, member of Congress).'</h5>
+          <h5><strong>B:</strong> 'Elected officials in my state (e.g. governor, state representative).'</h5>
+          <h5><strong>C:</strong> 'Elected officials in my city or community (e.g. mayor, city council).'</h5>
+          <h5><strong>D:</strong> 'The news media.'</h5>
+          <h5><strong>E:</strong> 'Large financial institutions on Wall Street.'</h5>
+          <h5><strong>F:</strong> 'Law enforcement and the legal system.'</h5>
+          <div class="row">
+            <div id="q4Heatmap"></div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="container-lg">
+    <div class="row align-items-center">
+      <div class="col-12 justify-content-center">
+        <p><i>2023 - Authors: Roberto Barrón, Luis Paul Garay, Alonso Lozano, and Daniel Murillo.<br>Data taken from the analysis done by Amelia Thomson-DeVeaux, Jasmine Mithani, and Laura Bronner, whose information can be found at https://github.com/fivethirtyeight/data/tree/master/non-voters.</i></p>
+      </div>
+    </div>
+  </div>
+  <!-- Imported CDNs and loaders -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- JavaScript file -->
+  <script type="text/javascript" src="/static/logic.js"></script>
+</body>
+</html>
