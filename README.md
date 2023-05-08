@@ -23,12 +23,12 @@ From Github repository: [https://github.com/fivethirtyeight/data/tree/master/non
 ## Authors
 Daniel Ramón Murillo Antuna [@daniel-r-murillo-antuna](https://www.github.com/daniel-r-murillo-antuna)<br />
 Luis Paul Garay Acosta [@PaulGaray777](https://github.com/PaulGaray777)<br />
-```#Thank you for reading me!```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 Please make sure to update tests as appropriate.
 ## Project 3
-[Github](https://github.com/loncho95/Non_voters_USA](https://github.com/loncho95/Non_voters_USA)
+[Github](https://github.com/loncho95/Non_voters_USA](https://github.com/loncho95/Non_voters_USA)<br />
+```#Thank you for reading me!```
 
 
 
