@@ -26,12 +26,30 @@
       values: values,
       labels: labels,
       parents: parents,
-      marker: {colorscale: [['College', '#17becf'], ['High school or less', '#bcbd22'], ['Some college', '#ff7f0e'], 
-      ['Black', '#1f77b4'], ['Hispanic', '#aec7e8'], ['Others', '#ffbb78'], ['White', '#ff9896'], 
-      ['Female', '#2ca02c'], ['Male', '#d62728'] 
-    ]}
+      marker: {
+        color: ['red', '#ffcccc', '#ff9999', '#ff6666', '#ff4d4d', '#ff1a1a', '#e60000', '#ff1a1a', '#b30000'],
+        colorscale: [[0, 'red'], [0.25, '#ffcccc'], [0.4, '#ff9999'], [0.5, '#ff6666'], [0.6, '#ff4d4d'], [0.75, '#ff1a1a'], [0.8, '#e60000'], [0.9, '#ff1a1a'], [1, '#b30000']],
+      }
     }];    
-  
-Plotly.newPlot('treemap', data)
 
+    var layout = {
+      width: 600,
+      height: 500,
+      margin: {
+        l: 20,
+        r: 20,
+        b: 20,
+        t: 20,
+        pad: 4
+      },
+      // Center the chart horizontally and vertically
+      style: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)'
+      }
+    };
+
+Plotly.newPlot('treemap', data)
 });
