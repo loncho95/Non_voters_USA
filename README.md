@@ -24,6 +24,7 @@ From Github repository: [https://github.com/fivethirtyeight/data/tree/master/non
 Daniel Ramón Murillo Antuna [@daniel-r-murillo-antuna](https://www.github.com/daniel-r-murillo-antuna)<br />
 Luis Paul Garay Acosta [@PaulGaray777](https://github.com/PaulGaray777)<br />
 Jorge Alonso Lozano Tena [https://github.com/loncho9]
+Roberto Gerónimo Barrón  [@barronr03](https://www.github.com/barronr03))<br />
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
