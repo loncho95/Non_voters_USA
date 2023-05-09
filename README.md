@@ -4,10 +4,10 @@ This repository contains a visualization project that depicts some of the most i
 
 ## Authors
 
-Daniel Ramón Murillo Antuna [@daniel-r-murillo-antuna](https://www.github.com/daniel-r-murillo-antuna)<br>
-Luis Paul Garay Acosta [@PaulGaray777](https://github.com/PaulGaray777)<br>
-Jorge Alonso Lozano Tena [@loncho9](https://github.com/loncho9)<br>
-Roberto Gerónimo Barrón Olvera [@barronr03](https://github.com/barronr03)
+Daniel Ramón Murillo Antuna: [@daniel-r-murillo-antuna](https://www.github.com/daniel-r-murillo-antuna)<br>
+Luis Paul Garay Acosta: [@PaulGaray777](https://github.com/PaulGaray777)<br>
+Jorge Alonso Lozano Tena: [@loncho9](https://github.com/loncho9)<br>
+Roberto Gerónimo Barrón Olvera: [@barronr03](https://github.com/barronr03)
 
 
 ## Repository and project description
@@ -88,11 +88,11 @@ We used JavaScript and HTML to create the interactive data visualizations mentio
 #### User testing:
 3 members of our team loaded the database, API, and dashboard locally in our computers and together we debugged it until it ran. The only error we encountered had to do with the database. It has to be imported, as described in the *Schema.sql* file and then, because we used pgAdmin4 to import it, we had to connect to a PostgreSQL engine. Once we found how to do so, we could run all the files, and ultimately the dashboard.
 
-#### Presentation:
-It took place via Zoom on 8th May 2023. You can find the slide deck above. It's titled: *''*, and it's a Microsoft PowerPoint file.
+#### Project presentation:
+It took place via Zoom on 8th May 2023. You can find the slide deck above and on [this link](https://github.com/loncho95/Non_voters_USA/blob/main/Non_voters_USA_presentation.pdf). The deck is titled: *'Non_voters_USA_presentation.pdf
+'*, and it's a PDF file, so it's very accesible.
 
 ### Conclusions:
-
 First of all, our dashboard is an efficient tool for visualizing key insights related to voter demographics. Second, the data outlines important trends that can inform future research and outreach efforts. The most important trends we found include a clear difference in education levels between regular voters and those who rarely or never vote. Specifically, regular voters have a higher proportion (46% vs. 29% of non-voters) of individuals with a college degree, while non-voters tend to have a higher proportion (44% vs. 23% of regular voters) of individuals with a high school education or less. There is a significant difference in income levels between those two groups: it seems that non-voters are more likely to be worse off than those who always vote. Furthermore, non-voters tend to have higher proportions of ethnic minorities than *always* voters, and there is no perceptible difference based on gender.
 Moreover, some notable similarities in the views of different statements among non-voters were that they tend to view society as becoming too soft and femenine and that the media is more interested in money than communicating the truth. Non-voters also tend believe that politicians do not care about them, at least in a higher proportion than regular voters. Another trend is that non-voters tend to have a higher perception that elections and public or government institutions have little impact on their lives. This is a significant concern, as it highlights a potential lack of engagement, trust, and probably *inclusion* in the democratic process.
 Finally, our dashboard strongly suggests a reason for not voting: a higher proportion of non-voters believe that, regardless of the election results, things will remain the same. This sentiment is less prevalent among regular voters.
@@ -110,6 +110,10 @@ It has the API we developed, a clean CSV with the data we used, and the HTML and
 ### The *database* folder:
 
 It contains the physical ERD of our database and the schema.
+
+### The *Non_voters_USA_presentation.pdf* file:
+
+It's a PDF file that contains the slide deck of our presentation.
 
 ### Final words:
 
