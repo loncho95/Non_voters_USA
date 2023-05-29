@@ -1,4 +1,4 @@
-#  What non-voters look like in the USA (*Project 3*)
+#  What non-voters look like in the USA
 
 This repository contains a visualization project that depicts some of the most interesting results of a survey about American citizens who tend not to vote.
 
