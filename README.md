@@ -4,7 +4,7 @@ This repository contains a visualization project that depicts some of the most i
 
 ## Authors
 
-Daniel Ramón Murillo Antuna: [@daniel-r-murillo-antuna](https://www.github.com/daniel-r-murillo-antuna)<br>
+Daniel R. Murillo Antuna: [@dan-murillo](https://www.github.com/dan-murillo)<br>
 Luis Paul Garay Acosta: [@PaulGaray777](https://github.com/PaulGaray777)<br>
 Jorge Alonso Lozano Tena: [@loncho9](https://github.com/loncho9)<br>
 Roberto Gerónimo Barrón Olvera: [@barronr03](https://github.com/barronr03)
